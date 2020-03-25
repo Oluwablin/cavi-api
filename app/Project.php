@@ -11,5 +11,7 @@ class Project extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'context'];
+    protected $guarded = [];
+    //protected $fillable = ['title', 'context', 'text', 'date', 'select', 'radio_button', 'check_boxes', 'text_area'];
+    protected $table = "projects";
 }
