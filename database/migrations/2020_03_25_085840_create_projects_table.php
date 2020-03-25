@@ -19,9 +19,9 @@ class CreateProjectsTable extends Migration
             $table->text('context')->nullable();
             $table->string('text')->nullable();
             $table->date('date')->nullable();
-            $table->integer('select')->nullable();
-            $table->integer('radio_button')->nullable();
-            $table->bigInteger('check_boxes')->nullable();
+            $table->enum('select', ['Oficemate', 'CV'])->nullable();
+            $table->enum('radio_button', ['Frontend', 'Backend', 'Devops'])->nullable();
+            $table->enum('check_boxes', ['Expert', 'Intermediate', 'Beginner'])->nullable();
             $table->text('text_area')->nullable();
             $table->timestamps();
         });
