@@ -10,9 +10,28 @@ class ProjectController extends Controller
     /**
      * NEW PROJECT IMPLEMENTATION STARTS
      */
+
+      /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return Project::all();
+        // return Project::all();
+        //Show all projects from the database and return to view
+        $projects = Project::all();
+        return view('project.index',['projects'=>$projects]);
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+       return view('project.create');
     }
 
      /**
@@ -21,9 +40,11 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        return $project;
+        $project = Project::find($id);
+
+        return view('project.show', compact('project'));
     }
 
     /**
@@ -39,6 +60,19 @@ class ProjectController extends Controller
         return response()->json($project, 201);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $project = Project::find($id);
+
+        return view('project.edit', compact('project'));
+    }
+
       /**
      * Update the specified resource in storage.
      *
@@ -50,7 +84,11 @@ class ProjectController extends Controller
     {
         $project->update($request->all());
 
-        return response()->json($project, 200);
+        // return response()->json($project, 200);
+
+        $project->save();
+
+      return redirect('/project')->with('success', 'Project Successfully Updated');
     }
 
      /**
@@ -59,13 +97,14 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function delete(Project $project)
+    public function destroy(Project $project)
     {
         $project->delete();
 
         // return response()->json(null, 204);
-        session()->flash('message.alert', 'success');
-        session()->flash('message.content', "Project Successfully Deleted");
-        return back();
+        // session()->flash('message.alert', 'success');
+        // session()->flash('message.content', "Project Successfully Deleted");
+        // return back();
+        return redirect('/project')->with('success', 'Project Successfully Deleted');
     }
 }

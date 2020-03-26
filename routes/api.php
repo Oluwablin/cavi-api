@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::apiResource('projects', 'ProjectController');
 Route::get('projects', 'ProjectController@index');
 Route::get('projects/{project}', 'ProjectController@show');
 Route::post('projects', 'ProjectController@store');
