@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h4>Create New Project</h4>
+            <h4>Create New Cavi Project</h4>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('project.index') }}"> Back</a>
@@ -42,7 +42,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Text:</strong>
-                <textarea class="form-control" style="height:150pxname="text" id="text" cols="30" rows="10" placeholder="Brief description about your project"></textarea>
+                <textarea class="form-control" style="height:150px" name="text" id="text" cols="30" rows="10" placeholder="Brief description about your project"></textarea>
            </div>
         </div>
         <div>
@@ -51,15 +51,14 @@
                 <input type="date" id="start" name="date">
             </div>
         </div>
-        <div>
-            <div class="form-group">              
+        <div>            
+            <div class="form-group">
                   <label for="project name"><strong>Project Name:</strong></label>
-                  <select multiple class="custom-select" name="select" id="project name">
-                        <option selected></option>
-                        <option value="Officemate">Officemate</option>
-                        <option value="CV">CV</option>
-                    </select>               
-            </div>
+                <select class="form-control form-control-sm" name="select" id="select">
+                   <option>Oficemate</option>
+                   <option>CV</option>
+                </select>
+          </div> 
         </div>
         <div>
             <div class="form-group">
@@ -67,6 +66,7 @@
                 <label for="stack"><strong>Stack:</strong></label>
               <input type="radio" name="radio_button" id="Stack" value="Backend" class="custom-control-input"> Backend
               <input type="radio" name="radio_button" id="Stack" value="Frontend" class="custom-control-input"> Frontend
+              <input type="radio" name="radio_button" id="Stack" value="Devops" class="custom-control-input"> Devops
               <span class="custom-control-indicator"></span>
               <span class="custom-control-description"></span>
             </label>

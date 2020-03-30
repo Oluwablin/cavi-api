@@ -43,7 +43,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Text:</strong>
-                    <textarea class="form-control" style="height:150pxname="text" id="text" cols="30" rows="10" placeholder="Brief description about your project">{{ $project->text }}</textarea>
+                    <textarea class="form-control" style="height:150px" name="text" id="text" cols="30" rows="10" placeholder="Brief description about your project">{{ $project->text }}</textarea>
                </div>
             </div>
             <div>
@@ -53,21 +53,21 @@
                 </div>
             </div>
             <div>
-                  <div class="form-group">              
-                      <label for="project name"><strong>Project Name:</strong></label>
-                         <select multiple class="custom-select" name="select" id="project name">
-                            <option selected></option>
-                            <option value="{{ $project->select }}">Officemate</option>
-                            <option value="{{ $project->select }}">CV</option>
-                         </select>               
+                  <div class="form-group">
+                      <label for="project name"><strong>Project Name:</strong></label> {{ $project->select }}
+                      <select class="form-control form-control-sm" name="select" id="select">
+                            <option>Oficemate</option>
+                            <option>CV</option>
+                       </select>               
                   </div>
             </div>
             <div>
                 <div class="form-group">
                   <label class="custom-control custom-radio">
-                     <label for="stack"><strong>Stack:</strong></label>
-                     <input type="radio" name="radio_button" id="radio_button" value="{{ $project->radio_button }}" class="custom-control-input"> Backend
-                     <input type="radio" name="radio_button" id="radio_button" value="{{ $project->radio_button }}" class="custom-control-input"> Frontend
+                     <label for="stack"><strong>Stack:</strong></label> {{ $project->radio_button }}
+                     <input type="radio" name="radio_button" id="radio_button" value="Backend" class="custom-control-input"> Backend
+                     <input type="radio" name="radio_button" id="radio_button" value="Frontend" class="custom-control-input"> Frontend
+                     <input type="radio" name="radio_button" id="radio_button" value="Devops" class="custom-control-input"> Devops
                      <span class="custom-control-indicator"></span>
                      <span class="custom-control-description"></span>
                   </label>
@@ -76,10 +76,10 @@
             <div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
-                        <label for="proficiency"><strong>Proficiency:</strong></label>
-                        <input type="checkbox" name="check_boxes" id="check_boxes" value="{{ $project->check_boxes }}" class="custom-control-input"> Expert
-                        <input type="checkbox" name="check_boxes" id="check_boxes" value="{{ $project->check_boxes }}" class="custom-control-input"> Intermediate
-                        <input type="checkbox" name="check_boxes" id="check_boxes" value="{{ $project->check_boxes }}" class="custom-control-input"> Beginner
+                        <label for="proficiency"><strong>Proficiency:</strong></label> {{ $project->check_boxes }}
+                        <input type="checkbox" name="check_boxes" id="check_boxes" value="Expert" class="custom-control-input"> Expert
+                        <input type="checkbox" name="check_boxes" id="check_boxes" value="Intermediate" class="custom-control-input"> Intermediate
+                        <input type="checkbox" name="check_boxes" id="check_boxes" value="Beginner" class="custom-control-input"> Beginner
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"></span>
                     </label>

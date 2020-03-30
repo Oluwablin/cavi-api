@@ -38,6 +38,12 @@
        </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+             <strong>Project Name:</strong>
+             {{ $project->select }}
+          </div>
+      </div>
+       <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Stack:</strong>
                 {{ $project->radio_button }}
            </div>
