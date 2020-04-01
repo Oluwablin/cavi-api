@@ -15,14 +15,17 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->nullable();
             $table->string('title')->nullable();
             $table->text('context')->nullable();
-            $table->string('text')->nullable();
-            $table->date('date')->nullable();
-            $table->enum('select', ['Oficemate', 'CV'])->nullable();
-            $table->enum('radio_button', ['Frontend', 'Backend', 'Devops'])->nullable();
-            $table->enum('check_boxes', ['Expert', 'Intermediate', 'Beginner'])->nullable();
-            $table->text('text_area')->nullable();
+            $table->string('description')->nullable();
+            $table->date('start_date')->nullable();
+            $table->integer('project')->nullable();
+            $table->integer('stack')->nullable();
+            $table->integer('proficiency')->nullable();
+            $table->text('details')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }
