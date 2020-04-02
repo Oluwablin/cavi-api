@@ -58,7 +58,7 @@
                       <select class="form-control form-control-sm" name="select" id="select">
                             <option>Oficemate</option>
                             <option>CV</option>
-                       </select>               
+                       </select>
                   </div>
             </div>
             <div>

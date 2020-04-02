@@ -21,12 +21,12 @@ Route::get('/', function () {
 Route::resource('project', 'ProjectController');
 
 // TODO: modify the route to match what ever you want on your frontend.
-Route::post('/this/can/be/anything', 	'ProjectController@addProject');
-Route::get('/this/can/be/anything', 	'ProjectController@allProjects');
-Route::get('/this/can/be/anything', 	'ProjectController@oneProjectById');
-Route::put('/this/can/be/anything', 	'ProjectController@updateProject');
-Route::delete('/this/can/be/anything', 	'ProjectController@deleteProject');
-Route::delete('/this/can/be/anything', 	'ProjectController@deleteAllProject');
-Route::get('/this/can/be/anything', 	'ProjectController@projects');
-Route::get('/this/can/be/anything', 	'ProjectController@stacks');
-Route::get('/this/can/be/anything', 	'ProjectController@proficiency');
+Route::post('add/project', 	'ProjectController@addProject');
+Route::get('fetch/all/projects', 	'ProjectController@allProjects');
+Route::get('fetch/one/project/{id}', 	'ProjectController@oneProjectById');
+Route::put('update/project', 	'ProjectController@updateProject');
+Route::delete('delete/project', 	'ProjectController@deleteProject');
+Route::delete('delete/all/project', 	'ProjectController@deleteAllProject');
+Route::get('fetch/project/projects', 	'ProjectController@projects');
+Route::get('fetch/project/stacks', 	'ProjectController@stacks');
+Route::get('fetch/project/proficiency', 	'ProjectController@proficiency');

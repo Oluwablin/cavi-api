@@ -47,16 +47,17 @@
         </div>
         <div>
             <div class="form-group">
-                <label for="date"><strong>Date:</strong></label>
-                <input type="date" id="start" name="date">
+                <label for="start_date"><strong>Date:</strong></label>
+                <input type="date" id="start_date" name="start_date">
             </div>
         </div>
         <div>            
             <div class="form-group">
-                  <label for="project name"><strong>Project Name:</strong></label>
-                <select class="form-control form-control-sm" name="select" id="select">
-                   <option>Oficemate</option>
-                   <option>CV</option>
+                  <label for="project"><strong>Project Name:</strong></label>
+                <select class="form-control-sm" name="project" id="">
+                    <option value=""> -- Select Company --</option>
+                    <option value="1"> Officemate </option>
+                    <option value="2"> CV </option>
                 </select>
           </div> 
         </div>
