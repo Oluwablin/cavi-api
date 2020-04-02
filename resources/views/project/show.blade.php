@@ -15,49 +15,49 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                {{ $project->title ?? ''}}
+                {{ $project->title }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Context:</strong>
-                {{ $project->context ?? ''}}
+                {{ $project->context }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                <strong>Text:</strong>
-               {{ $project->text ?? ''}}
+               {{ $project->text }}
            </div>
         </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>Date:</strong>
-              {{ $project->date ?? '' }}
+              {{ $project->date }}
            </div>
        </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
              <strong>Project Name:</strong>
-             {{ $project->select ?? '' }}
+             {{ $project->select }}
           </div>
       </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Stack:</strong>
-                {{ $project->radio_button ?? '' }}
+                {{ $project->radio_button }}
            </div>
        </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
            <div class="form-group">
                 <strong>Proficiency:</strong>
-                {{ $project->check_boxes ?? '' }}
+                {{ $project->check_boxes }}
            </div>
        </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>More Details:</strong>
-                {{ $project->text_area ?? ''}}
+                {{ $project->text_area }}
            </div>
        </div>
    </div>

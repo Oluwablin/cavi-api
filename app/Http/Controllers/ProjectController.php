@@ -228,12 +228,16 @@ class ProjectController extends Controller
 
         // return response
 <<<<<<< HEAD
+<<<<<<< HEAD
         //return response()->json($data, 200);
         return redirect('/project')->with('success', 'New Project Successfully Created');
 =======
         // return response()->json($data, 200);
         return redirect()->back()->with('success', 'Project Created Successfully.');
 >>>>>>> 616e6d3f81d7993ef5d72184a53fc9aa8c0f0797
+=======
+        return response()->json($data, 200);
+>>>>>>> parent of 616e6d3... create new project feature done
     }
     
     /*
