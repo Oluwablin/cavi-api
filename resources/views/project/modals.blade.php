@@ -6,8 +6,7 @@
                 <h4>Create CAV Project</h4>
             </div>
             <div class="modal-body">
-                <form action="add/project" method="POST" onsubmit="return saveNewProject()">
-                    @csrf
+                <form method="POST" onsubmit="return saveNewProject()">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -38,9 +37,6 @@
                                 <label for="project"><strong>Project Name:</strong></label>
                                 <select class="form-control" name="project" id="project">
                                     <option value=""> -- Select Project --</option>
-                                    <option value="1"> Officemate </option>
-                                    <option value="2"> TIMS </option>
-                                    <option value="3"> CATSS </option>
                                 </select>
                             </div>
                         </div>
@@ -49,23 +45,13 @@
                                 <label for="stack"><strong>Stack:</strong></label>
                                 <select class="form-control" name="stack" id="stack">
                                     <option value=""> -- Select Stack --</option>
-                                    <option value="1"> Frontend Developer </option>
-                                    <option value="2"> Backend Developer </option>
-                                    <option value="3"> Devs Ops </option>
-                                    <option value="4"> Designer UI/UX </option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="custom-control custom-checkbox">
-                                    <label for="proficiency"><strong>Proficiency:</strong></label>
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="1" class="custom-control-input"> Expert
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="2" class="custom-control-input"> Intermediate
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="3" class="custom-control-input"> Beginner
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description"></span>
-                                </label>
+                                <label for="proficiency"><strong>Proficiency:</strong></label>
+                                <select id="edit_proficiency" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -110,35 +96,32 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_title">Title</label>
-                                <textarea name="title" id="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title">"{{ $project->title }}"</textarea>
+                                <textarea name="title" id="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_context">Context</label>
-                                <textarea name="context" id="context" placeholder="Context of your project..." class="form-control" id="edit_context">{{ $project->context }}</textarea>
+                                <textarea name="context" id="context" placeholder="Context of your project..." class="form-control" id="edit_context"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_description">Description</label>
-                                <textarea name="description" id="description" cols="50" rows="10" placeholder="Describe your project..." class="form-control" id="edit_description">{{ $project->description }}</textarea>
+                                <textarea name="description" id="description" cols="50" rows="10" placeholder="Describe your project..." class="form-control" id="edit_description"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_start_date"><strong>Date:</strong></label>
-                                <input value="{{ $project->start_date }}" type="date" id="edit_start_date" name="start_date">
+                                <input value="" type="date" id="edit_start_date" name="start_date">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_project"><strong>Project Name:</strong></label>
                                 <select class="form-control" name="project" id="edit_project">
-                                    <option value="{{ $project->project }}">{{ $project->project }}</option>
-                                    <option value="1"> Officemate </option>
-                                    <option value="2"> TIMS </option>
-                                    <option value="3"> CATSS </option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -146,30 +129,20 @@
                             <div class="form-group">
                                 <label for="edit_stack"><strong>Stack:</strong></label>
                                 <select class="form-control" name="stack" id="edit_stack">
-                                    <option value="{{ $project->stack }}">{{ $project->stack }}</option>
-                                    <option value="1"> Frontend Developer </option>
-                                    <option value="2"> Backend Developer </option>
-                                    <option value="3"> Devs Ops </option>
-                                    <option value="4"> Designer UI/UX </option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="custom-control custom-checkbox">
-                                    <label for="edit_proficiency"><strong>Proficiency:</strong></label>{{ $project->proficiency }}
-                                    <input type="checkbox" name="proficiency" id="edit_proficiency" value="1" class="custom-control-input"> Expert
-                                    <input type="checkbox" name="proficiency" id="edit_proficiency" value="2" class="custom-control-input"> Intermediate
-                                    <input type="checkbox" name="proficiency" id="edit_proficiency" value="3" class="custom-control-input"> Beginner
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description"></span>
-                                </label>
+                                <label for="edit_proficiency"><strong>Proficiency:</strong></label>
+                                <select id="edit_proficiency" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_details"><strong>More Details:</strong></label>
-                                <textarea name="details" id="edit_details" cols="50" rows="10" placeholder="More details about your project... ">{{ $project->details }}</textarea>
+                                <textarea name="details" id="edit_details" cols="50" rows="10" placeholder="More details about your project... "></textarea>
                             </div>
                         </div>
                     </div>
