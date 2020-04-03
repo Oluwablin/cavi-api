@@ -109,10 +109,16 @@
             }).then(r => {
                 return r.json();
             }).then(results => {
-                console.log(results)
+                // console.log(results);
+                $("#project").html("");
+                $.each(results, function(index, val) {
+                    $("#project").append(`
+                        <option value="${val.id}"> ${val.name} </option>
+                    `);
+                });
             }).catch(err => {
                 console.log(err);
-            })
+            });
         }
 
         function fetchStackList() {

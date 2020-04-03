@@ -37,9 +37,6 @@
                                 <label for="project"><strong>Project Name:</strong></label>
                                 <select class="form-control" name="project" id="project">
                                     <option value=""> -- Select Project --</option>
-                                    <option value="1"> Officemate </option>
-                                    <option value="2"> TIMS </option>
-                                    <option value="3"> CATSS </option>
                                 </select>
                             </div>
                         </div>
@@ -48,23 +45,13 @@
                                 <label for="stack"><strong>Stack:</strong></label>
                                 <select class="form-control" name="stack" id="stack">
                                     <option value=""> -- Select Stack --</option>
-                                    <option value="1"> Frontend Developer </option>
-                                    <option value="2"> Backend Developer </option>
-                                    <option value="3"> Devs Ops </option>
-                                    <option value="4"> Designer UI/UX </option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="custom-control custom-checkbox">
-                                    <label for="proficiency"><strong>Proficiency:</strong></label>
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="1" class="custom-control-input"> Expert
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="2" class="custom-control-input"> Intermediate
-                                    <input type="checkbox" name="proficiency" id="proficiency" value="3" class="custom-control-input"> Beginner
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description"></span>
-                                </label>
+                                <label for="proficiency"><strong>Proficiency:</strong></label>
+                                <select id="edit_proficiency" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
