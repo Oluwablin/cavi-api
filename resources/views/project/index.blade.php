@@ -9,7 +9,7 @@
             </div>
 
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModalScrollable">
+                <button type="button" class="btn btn-primary" onclick="displayCreateProject()">
                     <i class="fa fa-plus"></i> Create New Project
                 </button>
             </div>
@@ -50,9 +50,44 @@
 @push('scripts')
     <script type="text/javascript">
         // load defaults
+        fetchAllProjects();
         fetchProjectList();
         fetchStackList();
         fetchProficiencyList();
+
+        function fetchAllProjects() {
+            fetch(`{{ url('fetch/all/added/project') }}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(r => {
+                return r.json();
+            }).then(results => {
+                console.log(results);
+                $("#load-all-projects").html("");
+                $.each(results, function(index, val) {
+                    $("#load-all-projects").append(`
+                        <tr>
+                            <td>${val.id}</td>
+                            <td>${val.user_id}</td>
+                            <td>${val.title}</td> 
+                            <td>${val.start_date}</td>
+                            <td>${val.project}</td>
+                            <td>${val.stack}</td>
+                            <td>${val.proficiency}</td>
+                            <td>${val.created_at}</td>
+                        </tr>
+                    `);
+                });
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+
+        function displayCreateProject() {
+            $("#createModalScrollable").modal();
+        }
 
         function saveNewProject() {
             var title       = $('#title').val();
@@ -80,6 +115,7 @@
                 },
                 success:function(response){
                     console.log(response);
+                    fetchAllProjects();
                 },
             });
 
@@ -115,24 +151,11 @@
                 return r.json();
             }).then(results => {
                 console.log(results);
-                $("#load-all-projects").html("");
+                $("#project").html("");
                 $.each(results, function(index, val) {
-                    $("#load-all-projects").append(`
-                        <tr>
-                            <td>${val.id}</td>
-                            <td>${val.user_id}</td>
-                            <td>${val.title}</td> 
-                            <td>${val.start_date}</td>
-                            <td>${val.project}</td>
-                            <td>${val.stack}</td>
-                            <td>${val.proficiency}</td>
-                            <td>${val.created_at}</td>
-                            
-                        </tr>
+                    $("#project").append(`
+                        <option value="${val.id}"> ${val.name} </option>
                     `);
-                    // $("#project").append(`
-                    //     <option value="${val.id}"> ${val.name} </option>
-                    // `);
                 });
             }).catch(err => {
                 console.log(err);
