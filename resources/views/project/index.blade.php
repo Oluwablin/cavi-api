@@ -98,7 +98,7 @@
             });
         });
 
-        
+
     //     function fetchOneProject(project_id) {
     //     $("#spinner").show();
 	// 	  console.log(project_id);
@@ -116,5 +116,7 @@
         function fetchOneProject(project_id) {
             console.log(project_id);
         }
+
+        $( document ).ready( fetchOneProject(project_id) );
     </script>
 @endpush
