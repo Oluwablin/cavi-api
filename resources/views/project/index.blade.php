@@ -47,7 +47,7 @@
                             {{-- <a class="btn btn-info" href="{{ route('project.show',$project->id) }}">View</a> --}}
                             
                             <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject({{ $project->id }})" title="View Project"><i class="fa fa-search"></i></a>
-                            <a class="btn btn-primary" href="{{ route('project.edit',$project->id) }}" title="Edit Project"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-primary" href="{{ route('project.edit',$project->id) }}" title="Edit Project"><i class="fa fa-edit"></i></a>
         
                             @csrf
                             @method('DELETE')
