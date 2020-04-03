@@ -80,6 +80,9 @@
                     console.log(response);
                 },
             });
+
+            // return stop the form from loading
+            return false;
         }
 
         // function fetchOneProject(project_id) {
