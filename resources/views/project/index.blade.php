@@ -9,7 +9,9 @@
             </div>
 
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('project.create') }}"> Create New CAV Project</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModalScrollable">
+                    <i class="fa fa-plus"></i> Create New Project
+                </button>
             </div>
         </div>
     </div>
@@ -112,12 +114,25 @@
             }).then(r => {
                 return r.json();
             }).then(results => {
-                // console.log(results);
-                $("#project").html("");
+                console.log(results);
+                $("#load-all-projects").html("");
                 $.each(results, function(index, val) {
-                    $("#project").append(`
-                        <option value="${val.id}"> ${val.name} </option>
+                    $("#load-all-projects").append(`
+                        <tr>
+                            <td>${val.id}</td>
+                            <td>${val.user_id}</td>
+                            <td>${val.title}</td> 
+                            <td>${val.start_date}</td>
+                            <td>${val.project}</td>
+                            <td>${val.stack}</td>
+                            <td>${val.proficiency}</td>
+                            <td>${val.created_at}</td>
+                            
+                        </tr>
                     `);
+                    // $("#project").append(`
+                    //     <option value="${val.id}"> ${val.name} </option>
+                    // `);
                 });
             }).catch(err => {
                 console.log(err);
