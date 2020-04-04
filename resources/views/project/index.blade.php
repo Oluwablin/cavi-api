@@ -49,7 +49,6 @@
 
 @push('scripts')
     <script type="text/javascript">
-
         // load defaults
         fetchAllProjects();
         fetchProjectList();
@@ -87,7 +86,6 @@
     		$("#edit-project-modal").modal();
     	}
 
-
         function fetchAllProjects() {
             fetch(`{{ url('fetch/all/added/project') }}`, {
                 method: 'GET',
@@ -110,6 +108,18 @@
                             <td>${val.stack}</td>
                             <td>${val.proficiency}</td>
                             <td>${val.created_at}</td>
+                            <td>
+                                <form action="" method="POST">
+                            
+                                    <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject(${val.id})" title="View Project"><i class="fa fa-search"></i></a>
+                                    <a class="btn btn-primary" href="" title="Edit Project"><i class="fa fa-pencil"></i></a>
+                
+                                    @csrf
+                                    @method('DELETE')
+                    
+                                    <button type="submit" class="btn btn-danger"title="Delete Project"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
                         </tr>
                     `);
                 });
@@ -123,14 +133,14 @@
         }
 
         function saveNewProject() {
-            var _token 			= $("#token").val();
+            var _token 		= $("#token").val();
             var title       = $('#title').val();
             var context     = $('#context').val();
             var description = $('#description').val();
             var start_date  = $('#start_date').val();
             var project     = $('#project').val();
-            var stack       = $("#stack").val();
-            var proficiency = $("#proficiency").val();
+            var stack       = $('#stack').val();
+            var proficiency = $('#proficiency').val();
             var details     = $('#details').val();
 
             $.ajax({
@@ -191,36 +201,27 @@
 
             // return stop the form from loading
            return false;
-
         }
 
-        // function fetchOneProject(project_id) {
-        //     $("#spinner").show();
-        //     console.log(project_id);
-        //     fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
-        //         //$("#edit_lettertype").val(result.letter_type_id);
-        //         $("#edit_subject").val(result.subject);
-        //         $("#edit_letterbody").val(result.body);
-        //         $("#viewModalScrollable").modal();
-        //         $("#spinner").hide();
-        //         }).catch(err => {
-        //         console.log(err);
-        //     });
-        // }
-    
-        function fetchOneProject(id) {
-            fetch(`{{ url('fetch/one/project/by/id/{id}') }}/${id}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				}
-			}).then(r => {
-				return r.json();
-			}).then(results => {
-				console.log(results)
-			}).catch(err => {
-				console.log(JSON.stringify(err));
-			})
+        function fetchOneProject(project_id) {
+            $("#spinner").show();
+            console.log(project_id);
+            fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+                //$("#edit_lettertype").val(result.letter_type_id);
+                // $("#edit_subject").val(result.subject);
+                $("#myLargeModalLabel").html(result.title);
+                $("#contextText").html(result.context);
+                $("#descriptionText").html(result.description);
+                $("#dateText").html(result.start_date);
+                $("#projectText").html(result.project);
+                $("#stackText").html(result.stack);
+                $("#proficiencyText").html(result.proficiency);
+                $("#detailsText").html(result.details);
+                $("#fetchOneProjectModal").modal();
+                $("#spinner").hide();
+            }).catch(err => {
+                console.log(err);
+            });
         }
 
         function fetchProjectList() {
