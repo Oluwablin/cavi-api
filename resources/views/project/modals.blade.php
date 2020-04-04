@@ -117,16 +117,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p><strong>Starting Date</strong></p>
-<<<<<<< HEAD
-                        <p>
-                            2020/04/02
-                        </p>
-                        <div class="col-md-6">
-=======
                         <p id="dateText"></p>
                     </div>
                     <div class="col-md-6">
->>>>>>> devb
                         <p><strong>Project</strong></p>
                         <p id="projectText"></p>
                     </div>
