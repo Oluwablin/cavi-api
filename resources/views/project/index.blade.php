@@ -106,9 +106,9 @@
             var context     = $('#context').val();
             var description = $('#description').val();
             var start_date  = $('#start_date').val();
-            var project     = $("input[name='project']:selected").val();
-            var stack       = $("input[name='stack']:selected").val();
-            var proficiency = $("input[name='proficiency']:selected").val();
+            var project     = $('#project').val();
+            var stack       = $('#stack').val();
+            var proficiency = $('#proficiency').val();
             var details     = $('#details').val();
 
             $.ajax({
