@@ -228,6 +228,7 @@ class ProjectController extends Controller
 
         // return response
         return response()->json($data, 200);
+        // return redirect('/project')->with('success', 'New Project Successfully Created');
     }
     
     /*
