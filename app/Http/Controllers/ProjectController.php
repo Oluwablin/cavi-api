@@ -172,8 +172,9 @@ class ProjectController extends Controller
     | DELETE ONE PROJECT
     |-----------------------------------------
     */
-    public function deleteProject(Request $request){
+    public function deleteProject(Request $request, $project_id){
         // body
+        $request->id = $project_id;
         $project    = new Project();
         $data       = $project->deleteProject($request);
 

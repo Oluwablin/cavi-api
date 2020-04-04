@@ -25,7 +25,7 @@ Route::post('/add/project', 			'ProjectController@addProject');
 Route::get('/fetch/all/added/project', 	'ProjectController@allProjects');
 Route::get('/view/project/{id}', 	'ProjectController@oneProjectById');
 Route::put('/update/project/{id}', 	'ProjectController@updateProject');
-Route::delete('/delete/project/{id}', 	'ProjectController@deleteProject');
+Route::delete('/delete/project/{project_id}', 	'ProjectController@deleteProject');
 Route::delete('/delete/all/projects', 	'ProjectController@deleteAllProject');
 Route::get('/fetch/project/list', 		'ProjectController@projects');
 Route::get('/fetch/stack/list', 		'ProjectController@stacks');

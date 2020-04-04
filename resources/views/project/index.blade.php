@@ -60,6 +60,23 @@
     		$("#add-new-project-modal").modal();
     	}
 
+        function deleteProject(project_id) {
+            fetch(`{{ url('/delete/project') }} /${project_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(r => {
+                return r.json();
+            }).then(results => {
+                console.log(results);
+               
+            }).catch(err => {
+                console.log(err);
+            });
+    		
+    	}
+
         function editProject(project_id) {
             $("#spinner").show();
             console.log(project_id);
@@ -106,7 +123,7 @@
                             <td>
                                     <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject(${val.id})" title="View Project"><i class="fa fa-search"></i></a>
                                     <a class="btn btn-primary" href="javascript:void(0);" onclick="editProject(${val.id})" title="Edit Project"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{ url('delete/project/${val.id}') }}"  method="DELETE" class="btn btn-danger" title="Delete Project"><i class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0);" onclick="deleteProject(${val.id})" class="btn btn-danger" title="Delete Project"><i class="fa fa-trash"></i></a>
                                     
                             </td>
                         </tr>
