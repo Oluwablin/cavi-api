@@ -61,11 +61,14 @@
     	}
 
         function deleteProject(project_id) {
-            fetch(`{{ url('/delete/project') }} /${project_id}`, {
+            var _token = '{{ csrf_token()}}';
+            var query = {_token}
+            fetch(`{{ url('/delete/project') }}/${project_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(query)
             }).then(r => {
                 return r.json();
             }).then(results => {
@@ -74,6 +77,7 @@
             }).catch(err => {
                 console.log(err);
             });
+            fetchAllProjects();
     		
     	}
 
@@ -83,6 +87,7 @@
             fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 //$("#edit_lettertype").val(result.letter_type_id);
                 // $("#edit_subject").val(result.subject);
+                $('#editProjectRef').val(result.id);
                 $('#edit_title').val(result.title);
                 $('#edit_context').val(result.context);
                 $('#edit_description').val(result.description);
@@ -170,21 +175,23 @@
         }
 
         function updateNewProject() {
-            var _token 			= $('#token').val();
-            var edit_title       = $('#edit_title').val();
-            var edit_context     = $('#edit_context').val();
-            var edit_description = $('#edit_description').val();
-            var edit_start_date  = $('#edit_start_date').val();
-            var edit_project     = $('#edit_project').val();
-            var edit_stack       = $('#edit_stack').val();
-            var edit_proficiency = $('#edit_proficiency').val();
-            var edit_details     = $('#edit_details').val();
+            var id          = $('#editProjectRef').val();
+            var _token 	    = $('#token').val();
+            var title       = $('#edit_title').val();
+            var context     = $('#edit_context').val();
+            var description = $('#edit_description').val();
+            var start_date  = $('#edit_start_date').val();
+            var project     = $('#edit_project').val();
+            var stack       = $('#edit_stack').val();
+            var proficiency = $('#edit_proficiency').val();
+            var details     = $('#edit_details').val();
 
             $.ajax({
                 url: "/update/project",
                 type: "POST",
                 data:{
                     "_token": "{{ csrf_token() }}",
+                    id:id,
                     title:title,
                     context:context,
                     description:description,
