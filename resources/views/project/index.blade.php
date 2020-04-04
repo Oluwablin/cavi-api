@@ -141,7 +141,6 @@
             fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 //$("#edit_lettertype").val(result.letter_type_id);
                 // $("#edit_subject").val(result.subject);
-                // $("#edit_letterbody").val(result.body);
                 $("#myLargeModalLabel").html(result.title);
                 $("#contextText").html(result.context);
                 $("#descriptionText").html(result.description);
