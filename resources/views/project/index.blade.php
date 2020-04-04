@@ -186,27 +186,24 @@
             var proficiency = $('#edit_proficiency').val();
             var details     = $('#edit_details').val();
 
-            $.ajax({
-                url: "/update/project",
-                type: "POST",
-                data:{
-                    "_token": "{{ csrf_token() }}",
-                    id:id,
-                    title:title,
-                    context:context,
-                    description:description,
-                    start_date:start_date,
-                    project:project,
-                    stack:stack,
-                    proficiency:proficiency,
-                    details:details,
+            
+            var _token = '{{ csrf_token()}}';
+            var query = {id, _token, title, context, description, start_date, project, stack, proficiency, details}
+            fetch(`{{ url('/update/project') }}/${project_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                success:function(response){
-                    console.log(response);
-                    fetchAllProjects();
-                },
+                body: JSON.stringify(query)
+            }).then(r => {
+                return r.json();
+            }).then(results => {
+                console.log(results);
+               
+            }).catch(err => {
+                console.log(err);
             });
-
+            fetchAllProjects();
             // return stop the form from loading
            return false;
         }
