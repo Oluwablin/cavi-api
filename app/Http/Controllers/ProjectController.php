@@ -110,6 +110,174 @@ class ProjectController extends Controller
         return redirect('/project')->with('success', 'Project Successfully Deleted');
     }
 
+    /*
+    |-----------------------------------------
+    | ADD NEW PROJECT
+    |-----------------------------------------
+    */
+    public function addProject(Request $request){
+        // body
+        $project    = new Project();
+        $data       = $project->addProject($request);
+
+        // return response
+        return response()->json($data, 200);
+        // return redirect('/project')->with('success', 'New Project Successfully Created');
+    }
+    
+    /*
+    |-----------------------------------------
+    | GET ALL PROJECT
+    |-----------------------------------------
+    */
+    public function allProjects(Request $request){
+        // body
+        $project    = new Project();
+        $data       = $project->allProjects($request);
+
+        // return response
+        return response()->json($data, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | GET PROJECT BY PROJECT ID
+    |-----------------------------------------
+    */
+    public function oneProjectById(Request $request){
+        // body
+        $project    = new Project();
+        $data       = $project->oneProjectById($request);
+
+        // return response
+        return response()->json($data, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | UPDATE ONE PROJECT
+    |-----------------------------------------
+    */
+    public function updateProject(Request $request){
+        // body
+        $project    = new Project();
+        $data       = $project->updateProject($request);
+
+        // return response
+        return response()->json($data, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | DELETE ONE PROJECT
+    |-----------------------------------------
+    */
+    public function deleteProject(Request $request, $project_id){
+        // body
+        $request->id = $project_id;
+        $project    = new Project();
+        $data       = $project->deleteProject($request);
+
+        // return response
+        return response()->json($data, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | DELETE ALL PROJECTS
+    |-----------------------------------------
+    */
+    public function deleteAllProject(Request $request){
+        // body
+        $project    = new Project();
+        $data       = $project->deleteAllProject($request);
+
+        // return response
+        return response()->json($data, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | SHOW ALL PROJECT OPTIONS
+    |-----------------------------------------
+    */
+    public function projects(Request $request){
+        // body
+        $projects = [
+            [
+                "id"    => 1,
+                "name"  => "Officemate"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "TIMS"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "CATSS"
+            ],
+        ];
+
+        // return response
+        return response()->json($projects, 200);
+    }
+    
+    /*
+    |-----------------------------------------
+    | SHOW ALL STACKS
+    |-----------------------------------------
+    */
+    public function stacks(Request $request){
+        // body
+        $stacks = [
+            [
+                "id"    => 1,
+                "name"  => "Frontend Developer"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "Backend Developer"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "Devs Ops"
+            ],
+            [
+                "id"    => 4,
+                "name"  => "Designer UI/UX"
+            ],
+        ];
+
+        // return response
+        return response()->json($stacks, 200);
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW ALL PROFICIENCY
+    |-----------------------------------------
+    */
+    public function proficiency(Request $request){
+        // body
+        $proficiency = [
+            [
+                "id"    => 1,
+                "name"  => "Expert"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "Intermediate"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "Beginner"
+            ],
+        ];
+
+        // return response
+        return response()->json($proficiency, 200);
+        
+    }
 
     //  /**
     //  * NEW PROJECT IMPLEMENTATION STARTS
@@ -216,171 +384,4 @@ class ProjectController extends Controller
     //     return redirect('/project')->with('success', 'Project Successfully Deleted');
     // }
     
-    /*
-    |-----------------------------------------
-    | ADD NEW PROJECT
-    |-----------------------------------------
-    */
-    public function addProject(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->addProject($request);
-
-        // return response
-        return response()->json($data, 200);
-        // return redirect('/project')->with('success', 'New Project Successfully Created');
-    }
-    
-    /*
-    |-----------------------------------------
-    | GET ALL PROJECT
-    |-----------------------------------------
-    */
-    public function allProjects(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->allProjects($request);
-
-        // return response
-        return response()->json($data, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | GET PROJECT BY PROJECT ID
-    |-----------------------------------------
-    */
-    public function oneProjectById(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->oneProjectById($request);
-
-        // return response
-        return response()->json($data, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | UPDATE ONE PROJECT
-    |-----------------------------------------
-    */
-    public function updateProject(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->updateProject($request);
-
-        // return response
-        return response()->json($data, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | DELETE ONE PROJECT
-    |-----------------------------------------
-    */
-    public function deleteProject(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->deleteProject($request);
-
-        // return response
-        return response()->json($data, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | DELETE ALL PROJECTS
-    |-----------------------------------------
-    */
-    public function deleteAllProject(Request $request){
-        // body
-        $project    = new Project();
-        $data       = $project->deleteAllProject($request);
-
-        // return response
-        return response()->json($data, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW ALL PROJECT OPTIONS
-    |-----------------------------------------
-    */
-    public function projects(Request $request){
-        // body
-        $projects = [
-            [
-                "id"    => 1,
-                "name"  => "Officemate"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "TIMS"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "CATSS"
-            ],
-        ];
-
-        // return response
-        return response()->json($projects, 200);
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW ALL STACKS
-    |-----------------------------------------
-    */
-    public function stacks(Request $request){
-        // body
-        $stacks = [
-            [
-                "id"    => 1,
-                "name"  => "Frontend Developer"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "Backend Developer"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "Devs Ops"
-            ],
-            [
-                "id"    => 4,
-                "name"  => "Designer UI/UX"
-            ],
-        ];
-
-        // return response
-        return response()->json($stacks, 200);
-    }
-
-    /*
-    |-----------------------------------------
-    | SHOW ALL PROFICIENCY
-    |-----------------------------------------
-    */
-    public function proficiency(Request $request){
-        // body
-        $proficiency = [
-            [
-                "id"    => 1,
-                "name"  => "Expert"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "Intermediate"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "Beginner"
-            ],
-        ];
-
-        // return response
-        return response()->json($proficiency, 200);
-        
-    }
 }
