@@ -233,7 +233,7 @@
                 return r.json();
             }).then(results => {
                 // console.log(results);
-                $("#project:select").html("");
+                $("#project").html("");
                 $.each(results, function(index, val) {
                     $("#project").append(`
                         <option value="${val.id}"> ${val.name} </option>
@@ -254,7 +254,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#stack:select").html("");
+                $("#stack").html("");
                 $.each(results, function(index, val) {
                     $("#stack").append(`
                         <option value="${val.id}"> ${val.name} </option>
@@ -275,7 +275,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#proficiency:select").html("");
+                $("#proficiency").html("");
                 $.each(results, function(index, val) {
                     $("#proficiency").append(`
                         <option value="${val.id}"> ${val.name} </option>

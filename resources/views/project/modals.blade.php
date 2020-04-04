@@ -95,7 +95,6 @@
     </div>
 </div>
 
-
 {{-- MODAL TO SHOW A PARTICULAR PROJECT --}}
 <div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
