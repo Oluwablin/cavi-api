@@ -36,6 +36,7 @@
                         <th>Stack</th>
                         <th>Proficiency</th>
                         <th>Created At</th>
+                        <th>Updated At</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -125,6 +126,7 @@
                             <td>${val.stack}</td>
                             <td>${val.proficiency}</td>
                             <td>${val.created_at}</td>
+                            <td>${val.updated_at}</td>
                             <td>
                                     <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject(${val.id})" title="View Project"><i class="fa fa-search"></i></a>
                                     <a class="btn btn-primary" href="javascript:void(0);" onclick="editProject(${val.id})" title="Edit Project"><i class="fa fa-pencil"></i></a>
@@ -166,10 +168,10 @@
                 },
                 success:function(response){
                     console.log(response);
-                    fetchAllProjects();
+                   
                 },
             });
-
+            fetchAllProjects();
             // return stop the form from loading
            return false;
         }
@@ -189,7 +191,7 @@
             
             var _token = '{{ csrf_token()}}';
             var query = {id, _token, title, context, description, start_date, project, stack, proficiency, details}
-            fetch(`{{ url('/update/project') }}/${project_id}`, {
+            fetch(`{{ url('/update/project') }}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
