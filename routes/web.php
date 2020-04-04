@@ -23,7 +23,7 @@ Route::resource('project', 'ProjectController');
 // TODO: modify the route to match what ever you want on your frontend.
 Route::post('/add/project', 			'ProjectController@addProject');
 Route::get('/fetch/all/added/project', 	'ProjectController@allProjects');
-Route::get('/this/can/be/anything', 	'ProjectController@oneProjectById');
+Route::get('/view/project/{id}', 	'ProjectController@oneProjectById');
 Route::put('/this/can/be/anything', 	'ProjectController@updateProject');
 Route::delete('/this/can/be/anything', 	'ProjectController@deleteProject');
 Route::delete('/this/can/be/anything', 	'ProjectController@deleteAllProject');
