@@ -1,9 +1,12 @@
-<!-- create new project form -->
+{{-- MODAL TO CREATE A PARTICULAR PROJECT --}}
 <div class="modal fade" id="add-new-project-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Create CAV Project</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
                 <form method="POST" onsubmit="return saveNewProject()">
@@ -12,7 +15,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <textarea name="title"  placeholder="Type the Title of your project..." class="form-control" id="title"></textarea>
+                                <textarea name="title"  placeholder="Title of your project..." class="form-control" id="title"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -78,17 +81,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <button class="btn btn-info" id="create-project-btn">Create</button>
+                                <button class="btn btn-info" id="create-project-btn">Create Project</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <div class="pull-right">
-                    <button class="btn btn-flat" type="button" data-dismiss="modal">
-                        close
-                    </button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -146,12 +147,15 @@
     </div>
 </div>
 
-<!-- create new project form -->
+{{-- MODAL TO EDIT A PARTICULAR PROJECT --}}
 <div class="modal fade" id="edit-project-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="edit-project-title"> EDIT CAV PROJECT</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
                 <form method="PUT" onsubmit="return updateNewProject()">
@@ -220,6 +224,13 @@
                             <div class="form-group">
                                 <label for="edit_details"><strong>More Details:</strong></label>
                                 <textarea name="details" id="edit_details" cols="50" rows="10" placeholder="More details about your project... "></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button class="btn btn-info" id="update-project-btn">Update Project</button>
                             </div>
                         </div>
                     </div>

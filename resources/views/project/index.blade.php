@@ -54,36 +54,31 @@
         fetchProjectList();
         fetchStackList();
         fetchProficiencyList();
-        fetchAllProjects();
         fetchOneProject();
 
         function addProject() {
     		$("#add-new-project-modal").modal();
     	}
 
-        function editProject(ProjectRef) {
-            console.log(ProjectRef);
-			fetch(`{{ url('fetch/one/project/by/id/{id}') }}?ProjectRef=`+ProjectRef, {
-				method: 'GET'
-			}).then(r => {
-				return r.json();
-			}).then(results => {
-				$("#editProjectRef").val(results.ProjectRef);
-				$("#edit_title").val(results.title);
-				$("#edit_context").val(results.context);
-				$("#edit_description").val(results.description);
-				$("#edit_start_date").val(results.start_date);
-                $("#edit_project").val(results.project);
-				$("#edit_stack").val(results.stack);
-                $("#edit_proficiency").val(results.proficiency);
-				$("#edit_details").val(results.details);
-				
-				// console.log(results)
-			}).catch(err => {
-				console.log(err);
-			})
-
-    		$("#edit-project-modal").modal();
+        function editProject(project_id) {
+            $("#spinner").show();
+            console.log(project_id);
+            fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+                //$("#edit_lettertype").val(result.letter_type_id);
+                // $("#edit_subject").val(result.subject);
+                $('#edit_title').val(result.title);
+                $('#edit_context').val(result.context);
+                $('#edit_description').val(result.description);
+                $('#edit_start_date').val(result.start_date);
+                $('#edit_project').val(result.project);
+                $('#edit_stack').val(result.stack);
+                $('#edit_proficiency').val(result.proficiency);
+                $('#edit_details').val(result.details);
+                $('#edit-project-modal').modal();
+                $("#spinner").hide();
+            }).catch(err => {
+                console.log(err);
+            });
     	}
 
         function fetchAllProjects() {
@@ -109,16 +104,10 @@
                             <td>${val.proficiency}</td>
                             <td>${val.created_at}</td>
                             <td>
-                                <form action="" method="POST">
-                            
                                     <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject(${val.id})" title="View Project"><i class="fa fa-search"></i></a>
-                                    <a class="btn btn-primary" href="" title="Edit Project"><i class="fa fa-pencil"></i></a>
-                
-                                    @csrf
-                                    @method('DELETE')
-                    
-                                    <button type="submit" class="btn btn-danger"title="Delete Project"><i class="fa fa-trash"></i></button>
-                                </form>
+                                    <a class="btn btn-primary" href="javascript:void(0);" onclick="editProject(${val.id})" title="Edit Project"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ url('delete/project/${val.id}') }}"  method="DELETE" class="btn btn-danger" title="Delete Project"><i class="fa fa-trash"></i></a>
+                                    
                             </td>
                         </tr>
                     `);
@@ -128,12 +117,8 @@
             });
         }
 
-        function displayCreateProject() {
-            $("#createModalScrollable").modal();
-        }
-
         function saveNewProject() {
-            var _token 		= $("#token").val();
+            var _token 		= $('#token').val();
             var title       = $('#title').val();
             var context     = $('#context').val();
             var description = $('#description').val();
@@ -165,37 +150,36 @@
 
             // return stop the form from loading
            return false;
-
-            $("#create-project-btn").modal();
         }
 
         function updateNewProject() {
-            var _token 			= $("#token").val();
-            var title       = $('#edit_title').val();
-            var context     = $('#edit_context').val();
-            var description = $('#edit_description').val();
-            var start_date  = $('#edit_start_date').val();
-            var project     = $('#edit_project').val();
-            var stack       = $("#edit_stack").val();
-            var proficiency = $("#edit_proficiency").val();
-            var details     = $('#edit_details').val();
+            var _token 			= $('#token').val();
+            var edit_title       = $('#edit_title').val();
+            var edit_context     = $('#edit_context').val();
+            var edit_description = $('#edit_description').val();
+            var edit_start_date  = $('#edit_start_date').val();
+            var edit_project     = $('#edit_project').val();
+            var edit_stack       = $('#edit_stack').val();
+            var edit_proficiency = $('#edit_proficiency').val();
+            var edit_details     = $('#edit_details').val();
 
             $.ajax({
                 url: "/update/project",
-                type: "PUT",
+                type: "POST",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    title:edit_title,
-                    context:edit_context,
-                    description:edit_description,
-                    start_date:edit_start_date,
-                    project:edit_project,
-                    stack:edit_stack,
-                    proficiency:edit_proficiency,
-                    details:edit_details,
+                    title:title,
+                    context:context,
+                    description:description,
+                    start_date:start_date,
+                    project:project,
+                    stack:stack,
+                    proficiency:proficiency,
+                    details:details,
                 },
                 success:function(response){
                     console.log(response);
+                    fetchAllProjects();
                 },
             });
 
@@ -286,77 +270,6 @@
                 console.log(err);
             })
         }
-
-        // get all projects
-        function fetchAllProjects() {
-            fetch(`{{url('fetch/all/projects')}}`).then(r => {
-                return r.json();
-            }).then(results => {
-                // console.log(results);
-                //var sn = 0;
-                $("#oad-all-projects").html("");
-                $.each(results, function(index, val) {
-                    //sn++;
-                    $("#load-all-projects").append(`
-                        <tr>
-                                <td>${val.id}</td>
-                                <td>${val.created_by}</td>
-                                <td>${val.title}</td>
-                                <td>${val.start_date}</td>
-                                <td>${val.project}</td>
-                                <td>${val.stack}</td>
-                                <td>${val.proficiency}</td>
-                                <td>${val.created_at}</td>
-                                <td>
-                                   <a class="btn btn-info" href="javascript:void(0);" onclick="fetchOneProject(id)/{id}" title="View Project"><i class="fa fa-search"></i>
-                                   </a>
-                                   <a class="btn btn-primary" href="javascript:void(0);" onclick="editProject()" title="Edit Project"><i class="fa fa-pencil"></i>
-                                   </a>
-                                   <form action="delete/project" method="DELETE" >
-                                    <button type="submit" class="btn btn-danger"title="Delete Project"><i class="fa fa-trash"></i>
-                                    </button>
-                                    </form>
-                                    
-                               </td>
-                               
-                        </tr>
-                    `);
-                });
-            }).catch(err => {
-                console.log(JSON.stringify(err));
-            })
-        }
-
-        // function fetchAllProjects() {
-		// 	fetch(`{{url('fetch/all/projects')}}`, {
-		// 		method: 'GET',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		}
-		// 	}).then(r => {
-		// 		return r.json();
-		// 	}).then(results => {
-		// 		console.log(results)
-		// 	}).catch(err => {
-		// 		console.log(JSON.stringify(err));
-		// 	})
-        //     $("#load-all-projects").html(`
-        // //     <tr>
-        //                     <td>${sn}</td>
-        //                     <td>${val.created_by}</td>
-        //                     <td>${val.title}</td>
-        //                     <td>${val.start_date}</td>
-        //                     <td>${val.stack}</td>
-        //                     <td>${val.proficiency}</td>
-        //                     <td>${val.created_at}</td>
-        //                     <td>
-        //                         <a href="{{url('equity/show/stocks')}}/${val.CustomerID}" class="btn btn-info">
-        //                             <i class="fa fa-clone"></i> View Transactions
-        //                         </a>
-        //                     </td>
-        //                 </tr>
-        //             `);
-		// }
 
     </script>
 @endpush
