@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- CREATE NEW PROJECT MODAL -->
 <div class="modal fade" id="createModalScrollable" tabindex="-1" role="dialog" aria-labelledby="createModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -22,6 +23,99 @@
                 </div>
                 <div class="form-group">
                     <textarea name="description" id="description" cols="10" rows="5" class="form-control" placeholder="Description of the project"></textarea>
+=======
+<!-- create new project form -->
+<div class="modal fade" id="add-new-project-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create CAV Project</h2>
+            </div>
+            <div class="modal-body">
+                <form method="POST" onsubmit="return saveNewProject()">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <textarea name="title"  placeholder="Type the Title of your project..." class="form-control" id="title"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="context">Context</label>
+                                <textarea name="context"  placeholder="Context of your project..." class="form-control" id="context"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" cols="50" rows="10" placeholder="Describe your project..." class="form-control" id="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start_date"><strong>Date:</strong></label>
+                                <input type="date" id="start_date" name="start_date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="project"><strong>Project Name:</strong></label>
+                                <select class="form-control" name="project" id="project">
+                                    <option value=""> -- Select Project --</option>
+                                    <option value="1">Officemate</option>
+                                    <option value="2">TIMS</option>
+                                    <option value="3">CATSS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="stack"><strong>Stack:</strong></label>
+                                <select class="form-control" name="stack" id="stack">
+                                    <option value=""> -- Select Stack --</option>
+                                    <option value="1">Frontend Developer</option>
+                                    <option value="2">Backend Developer</option>
+                                    <option value="3">Devs Ops</option>
+                                    <option value="3">Designer UI/UX</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="proficiency"><strong>Proficiency:</strong></label>
+                                <select id="proficiency" name="proficiency" class="form-control">
+                                    <option value=""> -- Select Proficiency --</option>
+                                    <option value="1">Expert</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Beginner</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="details"><strong>More Details:</strong></label>
+                                <textarea name="details" id="details" cols="50" rows="10" placeholder="More details about your project... "></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button class="btn btn-info" id="create-project-btn">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <button class="btn btn-flat" type="button" data-dismiss="modal">
+                        close
+                    </button>
+>>>>>>> dev
                 </div>
                 <div class="form-group">
                     <input type="date" id="start_date" name="start_date" class="form-control" id="" placeholder="">
@@ -64,6 +158,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 {{-- MODAL TO SHOW A PARTICULAR PROJECT --}}
 <div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -93,6 +188,84 @@
                         <p>
                             2020/04/02
                         </p>
+=======
+<!-- create new project form -->
+<div class="modal fade" id="edit-project-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="edit-project-title"> EDIT CAV PROJECT</h4>
+            </div>
+            <div class="modal-body">
+                <form method="PUT" onsubmit="return updateNewProject()">
+                    @csrf
+                    <input type="hidden" id="editProjectRef" name="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_title">Title</label>
+                                <textarea name="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_context">Context</label>
+                                <textarea name="context" placeholder="Context of your project..." class="form-control" id="edit_context"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_description">Description</label>
+                                <textarea name="description" cols="50" rows="10" placeholder="Describe your project..." class="form-control" id="edit_description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_start_date"><strong>Date:</strong></label>
+                                <input value="" type="date" id="edit_start_date" name="start_date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_project"><strong>Project Name:</strong></label>
+                                <select class="form-control" name="project" id="edit_project">
+                                    <option value=""> -- Select Project --</option>
+                                    <option value="1">Officemate</option>
+                                    <option value="2">TIMS</option>
+                                    <option value="3">CATSS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_stack"><strong>Stack:</strong></label>
+                                <select class="form-control" name="stack" id="edit_stack">
+                                    <option value=""> -- Select Stack --</option>
+                                    <option value="1">Frontend Developer</option>
+                                    <option value="2">Backend Developer</option>
+                                    <option value="3">Devs Ops</option>
+                                    <option value="3">Designer UI/UX</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_proficiency"><strong>Proficiency:</strong></label>
+                                <select id="edit_proficiency" name="proficiency" class="form-control">
+                                <option value=""> -- Select Proficiency --</option>
+                                <option value="1">Expert</option>
+                                <option value="2">Intermediate</option>
+                                <option value="3">Beginner</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_details"><strong>More Details:</strong></label>
+                                <textarea name="details" id="edit_details" cols="50" rows="10" placeholder="More details about your project... "></textarea>
+                            </div>
+                        </div>
+>>>>>>> dev
                     </div>
                     <div class="col-md-6">
                         <p><strong>Project</strong></p>
