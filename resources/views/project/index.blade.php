@@ -175,12 +175,14 @@
                    
                 },
             });
+            $('#add-new-project-modal').modal('hide');
             fetchAllProjects();
             // return stop the form from loading
            return false;
         }
 
         function updateNewProject() {
+            
             var id          = $('#editProjectRef').val();
             var _token 	    = $('#token').val();
             var title       = $('#edit_title').val();
@@ -209,6 +211,7 @@
             }).catch(err => {
                 console.log(err);
             });
+            $('#edit-project-modal').modal('hide');
             fetchAllProjects();
             // return stop the form from loading
            return false;
