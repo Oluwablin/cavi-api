@@ -62,6 +62,9 @@
     	}
 
         function deleteProject(project_id) {
+            if(!confirm("Are you sure ?"))
+            event.preventDefault();
+            else{
             var _token = '{{ csrf_token()}}';
             var query = {_token}
             fetch(`{{ url('/delete/project') }}/${project_id}`, {
@@ -81,6 +84,7 @@
             fetchAllProjects();
     		
     	}
+        }
 
         function editProject(project_id) {
             $("#spinner").show();
