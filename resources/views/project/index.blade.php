@@ -2,6 +2,30 @@
  
 @section('content')
     <br />
+    <style>
+        body {
+  background-image: url("img_tree.gif"), url("paper.gif");
+  background-color: #cccccc;
+}
+
+        #grad1 {
+  height: 200px;
+  background-color: #cccccc;
+  background-image: linear-gradient(red, yellow);
+}
+
+
+h2 {
+  border: 2px dotted blue;
+}
+
+div {
+  border: double;
+  border-bottom-left-radius: 25px;
+}
+
+    </style>
+
     <div class="row">
         <div class="col-md-12">
             <div class="">
@@ -40,6 +64,20 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Created By</th>
+                        <th>Title</th>
+                        <th>Starting Date</th>
+                        <th>Project Name</th>
+                        <th>Stack</th>
+                        <th>Proficiency</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
                 <tbody id="load-all-projects"></tbody>
             </table>
         </div>
@@ -81,8 +119,7 @@
             }).catch(err => {
                 console.log(err);
             });
-            fetchAllProjects();
-    		
+            fetchAllProjects();	
     	}
         }
 
@@ -98,8 +135,8 @@
                 $('#edit_description').val(result.description);
                 $('#edit_start_date').val(result.start_date);
                 $('#edit_project').val(result.project);
-                $('#edit_stack').val(result.stack);
-                $('#edit_proficiency').val(result.proficiency);
+                $('input[name=stack]:checked').val(result.stack);
+                $('input[name=proficiency]:checked').val(result.proficiency);
                 $('#edit_details').val(result.details);
                 $('#edit-project-modal').modal();
                 $("#spinner").hide();
@@ -152,8 +189,8 @@
             var description = $('#description').val();
             var start_date  = $('#start_date').val();
             var project     = $('#project').val();
-            var stack       = $('#stack').val();
-            var proficiency = $('#proficiency').val();
+            var stack       = $('input[name=stack]:checked').val();
+            var proficiency = $('input[name=proficiency]:checked').val();
             var details     = $('#details').val();
 
             $.ajax({
@@ -171,18 +208,16 @@
                     details:details,
                 },
                 success:function(response){
-                    console.log(response);
-                   
+                    console.log(response);   
                 },
             });
             $('#add-new-project-modal').modal('hide');
             fetchAllProjects();
-            // return stop the form from loading
+            // return stops the form from loading
            return false;
         }
 
-        function updateNewProject() {
-            
+        function updateNewProject() {  
             var id          = $('#editProjectRef').val();
             var _token 	    = $('#token').val();
             var title       = $('#edit_title').val();
@@ -190,11 +225,10 @@
             var description = $('#edit_description').val();
             var start_date  = $('#edit_start_date').val();
             var project     = $('#edit_project').val();
-            var stack       = $('#edit_stack').val();
-            var proficiency = $('#edit_proficiency').val();
+            var stack       = $('input[name=edit_stack]:checked').val();
+            var proficiency = $('input[name=edit_proficiency]:checked').val();
             var details     = $('#edit_details').val();
 
-            
             var _token = '{{ csrf_token()}}';
             var query = {id, _token, title, context, description, start_date, project, stack, proficiency, details}
             fetch(`{{ url('api/update/project') }}/${id}`, {
@@ -213,7 +247,7 @@
             });
             $('#edit-project-modal').modal('hide');
             fetchAllProjects();
-            // return stop the form from loading
+            // return stops the form from loading
            return false;
         }
 
@@ -221,8 +255,6 @@
             $("#spinner").show();
             console.log(project_id);
             fetch(`{{ url('/api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
-                //$("#edit_lettertype").val(result.letter_type_id);
-                // $("#edit_subject").val(result.subject);
                 $("#myLargeModalLabel").html(result.title);
                 $("#contextText").html(result.context);
                 $("#descriptionText").html(result.description);
@@ -269,7 +301,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#stack:select").html("");
+                $("#stack").html("");
                 $.each(results, function(index, val) {
                     $("#stack").append(`
                         <option value="${val.id}"> ${val.name} </option>
@@ -290,7 +322,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#proficiency:select").html("");
+                $("#proficiency").html("");
                 $.each(results, function(index, val) {
                     $("#proficiency").append(`
                         <option value="${val.id}"> ${val.name} </option>

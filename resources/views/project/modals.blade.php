@@ -15,7 +15,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <textarea name="title"  placeholder="Title of your project..." class="form-control" id="title"></textarea>
+                                <input type="name" name="title"  placeholder="Title of your project..." class="form-control" id="title">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -50,24 +50,48 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="stack"><strong>Stack:</strong></label>
-                                <select class="form-control" name="stack" id="stack">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                                                  
+                                    <input type="radio" class="form-check-input" name="stack" value="1">
+                                    Frontend Developer<br>
+                                    <input type="radio" class="form-check-input" name="stack" value="2">
+                                    Backend Developer<br>
+                                    <input type="radio" class="form-check-input" name="stack" value="3">
+                                    Devs Ops<br>
+                                    <input type="radio" class="form-check-input" name="stack" value="4">
+                                    Designer UI/UX
+                                  </label>
+                                </div>
+                                {{-- <select class="form-control" name="stack" id="stack">
                                     <option value=""> -- Select Stack --</option>
                                     <option value="1">Frontend Developer</option>
                                     <option value="2">Backend Developer</option>
                                     <option value="3">Devs Ops</option>
                                     <option value="3">Designer UI/UX</option>
-                                </select>
+                                </select> --}}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="proficiency"><strong>Proficiency:</strong></label>
-                                <select id="proficiency" name="proficiency" class="form-control">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                      
+                                       <input type="checkbox" class="form-check-input" name="proficiency" value="1">
+                                            Expert<br>
+                                       <input type="checkbox" class="form-check-input" name="proficiency" value="2">
+                                            Intermediate<br>
+                                       <input type="checkbox" class="form-check-input" name="proficiency" value="3">
+                                            Beginner
+                                  </label>
+                                </div>
+                                {{-- <select id="proficiency" name="proficiency" class="form-control">
                                     <option value=""> -- Select Proficiency --</option>
                                     <option value="1">Expert</option>
                                     <option value="2">Intermediate</option>
                                     <option value="3">Beginner</option>
-                                </select>
+                                </select> --}}
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -165,7 +189,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_title">Title</label>
-                                <textarea name="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title"></textarea>
+                                <input type="name" name="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -200,24 +224,35 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_stack"><strong>Stack:</strong></label>
-                                <select class="form-control" name="stack" id="edit_stack">
-                                    <option value=""> -- Select Stack --</option>
-                                    <option value="1">Frontend Developer</option>
-                                    <option value="2">Backend Developer</option>
-                                    <option value="3">Devs Ops</option>
-                                    <option value="3">Designer UI/UX</option>
-                                </select>
+                                <div class="form-check">
+                                    <label class="form-check-label">     
+                                        <input type="hidden" class="form-check-input" name="" id="edit_stack" value="" >                              
+                                        <input type="radio" class="form-check-input" name="edit_stack" value="1">
+                                           Frontend Developer<br>
+                                        <input type="radio" class="form-check-input" name="edit_stack" value="2">
+                                           Backend Developer<br>
+                                        <input type="radio" class="form-check-input" name="edit_stack" value="3">
+                                           Devs Ops<br>
+                                        <input type="radio" class="form-check-input" name="edit_stack" value="4">
+                                           Designer UI/UX
+                                   </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_proficiency"><strong>Proficiency:</strong></label>
-                                <select id="edit_proficiency" name="proficiency" class="form-control">
-                                <option value=""> -- Select Proficiency --</option>
-                                <option value="1">Expert</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Beginner</option>
-                            </select>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="hidden" class="form-check-input" name="" id="edit_proficiency" value="" >
+                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="1">
+                                             Expert<br>
+                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="2">
+                                             Intermediate<br>
+                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="3">
+                                             Beginner
+                                   </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">

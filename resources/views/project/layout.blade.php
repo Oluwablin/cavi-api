@@ -28,7 +28,15 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	    {{-- This is where our script will extend from --}}
-	    @stack('scripts')
+		@stack('scripts')
+		
+		<style>
+			.modal-content {
+		 background-image: url("img_tree.gif"), url("paper.gif");
+		 background-color: #cccccc;
+	   </style>
+	   @stack('styles')
+	   
 	</div>
 </body>
 </html>
