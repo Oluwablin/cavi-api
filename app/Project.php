@@ -163,7 +163,7 @@ class Project extends Model
         Project::truncate();
         $data = [
             "status"     => "success",
-            "message"    => "All project has been deleted!" 
+            "message"    => "All projects have been deleted!" 
         ];
 
         // return
