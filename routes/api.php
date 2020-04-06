@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/add/project', 			        'ProjectController@addProject');
-Route::get('/fetch/all/added/project', 	        'ProjectController@allProjects');
+Route::get('/fetch/all/added/projects', 	        'ProjectController@allProjects');
 Route::get('/view/project/{id}', 	            'ProjectController@oneProjectById');
 Route::put('/update/project/{id}', 	            'ProjectController@updateProject');
 Route::delete('/delete/project/{project_id}', 	'ProjectController@deleteProject');
@@ -24,16 +24,9 @@ Route::get('/fetch/project/list', 		        'ProjectController@projects');
 Route::get('/fetch/stack/list', 		        'ProjectController@stacks');
 Route::get('/fetch/proficiency/list', 	        'ProjectController@proficiency');
 
-// Route::apiResource('projects', 'ProjectController');
-// Route::get('projects', 'ProjectController@index');
-// Route::get('projects/{project}', 'ProjectController@show');
-// Route::post('projects', 'ProjectController@store');
-// Route::put('projects/{project}', 'ProjectController@update');
-// Route::delete('projects/{project}', 'ProjectController@delete');
-
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes USERS
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -45,3 +38,11 @@ Route::get('/fetch/proficiency/list', 	        'ProjectController@proficiency');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Route::apiResource('projects', 'ProjectController');
+// Route::get('projects', 'ProjectController@index');
+// Route::get('projects/{project}', 'ProjectController@show');
+// Route::post('projects', 'ProjectController@store');
+// Route::put('projects/{project}', 'ProjectController@update');
+// Route::delete('projects/{project}', 'ProjectController@delete');

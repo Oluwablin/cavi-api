@@ -67,7 +67,7 @@
             else{
             var _token = '{{ csrf_token()}}';
             var query = {_token}
-            fetch(`{{ url('/delete/project') }}/${project_id}`, {
+            fetch(`{{ url('api/delete/project') }}/${project_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@
         function editProject(project_id) {
             $("#spinner").show();
             console.log(project_id);
-            fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+            fetch(`{{ url('api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 //$("#edit_lettertype").val(result.letter_type_id);
                 // $("#edit_subject").val(result.subject);
                 $('#editProjectRef').val(result.id);
@@ -109,7 +109,7 @@
     	}
 
         function fetchAllProjects() {
-            fetch(`{{ url('fetch/all/added/project') }}`, {
+            fetch(`{{ url('api/fetch/all/added/projects') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -157,7 +157,7 @@
             var details     = $('#details').val();
 
             $.ajax({
-                url: "/add/project",
+                url: "api/add/project",
                 type: "POST",
                 data:{
                     "_token": "{{ csrf_token() }}",
@@ -197,7 +197,7 @@
             
             var _token = '{{ csrf_token()}}';
             var query = {id, _token, title, context, description, start_date, project, stack, proficiency, details}
-            fetch(`{{ url('/update/project') }}/${id}`, {
+            fetch(`{{ url('api/update/project') }}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -220,7 +220,7 @@
         function fetchOneProject(project_id) {
             $("#spinner").show();
             console.log(project_id);
-            fetch(`{{ url('/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+            fetch(`{{ url('/api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 //$("#edit_lettertype").val(result.letter_type_id);
                 // $("#edit_subject").val(result.subject);
                 $("#myLargeModalLabel").html(result.title);
@@ -239,7 +239,7 @@
         }
 
         function fetchProjectList() {
-            fetch(`{{ url('fetch/project/list') }}`, {
+            fetch(`{{ url('api/fetch/project/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -248,7 +248,7 @@
                 return r.json();
             }).then(results => {
                 // console.log(results);
-                $("#project").html("");
+                $("#project:select").html("");
                 $.each(results, function(index, val) {
                     $("#project").append(`
                         <option value="${val.id}"> ${val.name} </option>
@@ -260,7 +260,7 @@
         }
 
         function fetchStackList() {
-            fetch(`{{ url('fetch/stack/list') }}`, {
+            fetch(`{{ url('api/fetch/stack/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -269,7 +269,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#stack").html("");
+                $("#stack:select").html("");
                 $.each(results, function(index, val) {
                     $("#stack").append(`
                         <option value="${val.id}"> ${val.name} </option>
@@ -281,7 +281,7 @@
         }
 
         function fetchProficiencyList() {
-            fetch(`{{ url('fetch/proficiency/list') }}`, {
+            fetch(`{{ url('api/fetch/proficiency/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -290,7 +290,7 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#proficiency").html("");
+                $("#proficiency:select").html("");
                 $.each(results, function(index, val) {
                     $("#proficiency").append(`
                         <option value="${val.id}"> ${val.name} </option>
