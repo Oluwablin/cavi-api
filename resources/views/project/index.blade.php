@@ -5,7 +5,7 @@
     <style>
         body {
   background-image: url("img_tree.gif"), url("paper.gif");
-  background-color: #cccccc;
+  background-color: whitesmoke;
 }
 
         #grad1 {
@@ -124,8 +124,8 @@
                 $('#edit_description').val(result.description);
                 $('#edit_start_date').val(result.start_date);
                 $('#edit_project').val(result.project);
-                $('input[name=stack]:checked').val(result.stack);
-                $('input[name=proficiency]:checked').val(result.proficiency);
+                $("input[type='radio']:checked").val(result.stack);
+                $("input[type='checkbox']:checked").val(result.proficiency);
                 $('#edit_details').val(result.details);
                 $('#edit-project-modal').modal();
                 $("#spinner").hide();
@@ -178,8 +178,8 @@
             var description = $('#description').val();
             var start_date  = $('#start_date').val();
             var project     = $('#project').val();
-            var stack       = $('input[name=stack]:checked').val();
-            var proficiency = $('input[name=proficiency]:checked').val();
+            var stack       = $("input[type='radio']:checked").val();
+            var proficiency = $("input[type='checkbox']:checked").val();
             var details     = $('#details').val();
 
             $.ajax({
