@@ -51,15 +51,8 @@
                             <div class="form-group">
                                 <label for="stack"><strong>Stack:</strong></label>
                                 <div class="form-check">
-                                    <label class="form-check-label">                               
-                                    <input type="radio" class="form-check-input" name="stack" value="1">
-                                    Frontend Developer<br>
-                                    <input type="radio" class="form-check-input" name="stack" value="2">
-                                    Backend Developer<br>
-                                    <input type="radio" class="form-check-input" name="stack" value="3">
-                                    Devs Ops<br>
-                                    <input type="radio" class="form-check-input" name="stack" value="4">
-                                    Designer UI/UX
+                                    <label class="form-check-label">
+                                        <div id="all-stack"></div>
                                   </label>
                                 </div>
                             </div>
@@ -69,16 +62,12 @@
                                 <label for="proficiency"><strong>Proficiency:</strong></label>
                                 <div class="form-check">
                                   <label class="form-check-label">   
-                                       <input type="checkbox" class="form-check-input" name="proficiency" value="1">
-                                            Expert<br>
-                                       <input type="checkbox" class="form-check-input" name="proficiency" value="2">
-                                            Intermediate<br>
-                                       <input type="checkbox" class="form-check-input" name="proficiency" value="3">
-                                            Beginner
+                                            <div id="all-proficiency"></div>
                                   </label>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="details"><strong>More Details:</strong></label>
@@ -211,15 +200,7 @@
                                 <label for="edit_stack"><strong>Stack:</strong></label>
                                 <div class="form-check">
                                     <label class="form-check-label">     
-                                        <input type="hidden" class="form-check-input" name="" id="edit_stack" value="" >                              
-                                        <input type="radio" class="form-check-input" name="edit_stack" value="1">
-                                           Frontend Developer<br>
-                                        <input type="radio" class="form-check-input" name="edit_stack" value="2">
-                                           Backend Developer<br>
-                                        <input type="radio" class="form-check-input" name="edit_stack" value="3">
-                                           Devs Ops<br>
-                                        <input type="radio" class="form-check-input" name="edit_stack" value="4">
-                                           Designer UI/UX
+                                        <div id="edit-all-stack"></div>
                                    </label>
                                 </div>
                             </div>
@@ -229,13 +210,7 @@
                                 <label for="edit_proficiency"><strong>Proficiency:</strong></label>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="hidden" class="form-check-input" name="" id="edit_proficiency" value="" >
-                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="1">
-                                             Expert<br>
-                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="2">
-                                             Intermediate<br>
-                                        <input type="checkbox" class="form-check-input" name="edit_proficiency" value="3">
-                                             Beginner
+                                             <div id="edit-all-proficiency"></div>
                                    </label>
                                 </div>
                             </div>

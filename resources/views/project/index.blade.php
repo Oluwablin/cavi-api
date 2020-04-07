@@ -84,6 +84,7 @@
         fetchProficiencyList();
         fetchOneProject();
 
+
         function addProject() {
     		$("#add-new-project-modal").modal();
     	}
@@ -113,19 +114,18 @@
         }
 
         function editProject(project_id) {
-            $("#spinner").show();
+           // $("#spinner").show();
             console.log(project_id);
             fetch(`{{ url('api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
-                //$("#edit_lettertype").val(result.letter_type_id);
-                // $("#edit_subject").val(result.subject);
-                $('#editProjectRef').val(result.id);
                 $('#edit_title').val(result.title);
                 $('#edit_context').val(result.context);
                 $('#edit_description').val(result.description);
                 $('#edit_start_date').val(result.start_date);
                 $('#edit_project').val(result.project);
-                $("input[type='radio']:checked").val(result.stack);
-                $("input[type='checkbox']:checked").val(result.proficiency);
+               // $("input[type='radio']:checked").val(result.stack);
+               // $("input[type='checkbox']:checked").val(result.proficiency);
+                resolveStackList(result.stack);
+                resolveProficiencyList(result.proficiency);
                 $('#edit_details').val(result.details);
                 $('#edit-project-modal').modal();
                 $("#spinner").hide();
@@ -290,11 +290,43 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#stack").html("");
+                $("#all-stack").html("");
+                $("#edit-all-stacky").html("");
                 $.each(results, function(index, val) {
-                    $("#stack").append(`
-                        <option value="${val.id}"> ${val.name} </option>
+                    $("#all-stack").append(`
+                        <input type="radio" class="form-check-input" name="stack" value="${val.id}">${val.name}<br>
                     `);
+                    $("#edit-all-stack").append(`
+                        <input type="radio" class="form-check-input" name="stack" value="${val.id}">${val.name}<br>
+                    `);
+                });
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+
+        function resolveStackList(stack_id) {
+            fetch(`{{ url('api/fetch/stack/list') }}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(r => {
+                return r.json();
+            }).then(results => {
+                //console.log(results); 
+                $("#edit-all-stack").html("");
+                $.each(results, function(index, val) {
+                    if(val.id == stack_id){
+                        $("#edit-all-stack").append(`
+                        <input type="radio" class="form-check-input" name="stack" value="${val.id}" checked>${val.name}<br>
+                       `);
+                    }
+                    else{
+                        $("#edit-all-stack").append(`
+                        <input type="radio" class="form-check-input" name="stack" value="${val.id}">${val.name}<br>
+                       `);
+                    }
                 });
             }).catch(err => {
                 console.log(err);
@@ -311,11 +343,43 @@
                 return r.json();
             }).then(results => {
                 //console.log(results);
-                $("#proficiency").html("");
+                $("#all-proficiency").html("");
+                $("#edit-all-proficiency").html("");
                 $.each(results, function(index, val) {
-                    $("#proficiency").append(`
-                        <option value="${val.id}"> ${val.name} </option>
+                    $("#all-proficiency").append(`
+                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
                     `);
+                    $("#edit-all-proficiency").append(`
+                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
+                    `);
+                });
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+
+        function resolveProficiencyList(proficiency_id) {
+            fetch(`{{ url('api/fetch/proficiency/list') }}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(r => {
+                return r.json();
+            }).then(results => {
+                //console.log(results); 
+                $("#edit-all-proficiency").html("");
+                $.each(results, function(index, val) {
+                    if(val.id == proficiency_id){
+                        $("#edit-all-proficiency").append(`
+                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}" checked>${val.name}<br>
+                       `);
+                    }
+                    else{
+                        $("#edit-all-proficiency").append(`
+                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
+                       `);
+                    }
                 });
             }).catch(err => {
                 console.log(err);

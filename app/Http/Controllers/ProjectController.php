@@ -186,6 +186,10 @@ class ProjectController extends Controller
                 "id"    => 3,
                 "name"  => "Beginner"
             ],
+            [ 
+                "id"    => 4,
+                "name"  => "Novice"
+            ],
         ];
 
         // return response
