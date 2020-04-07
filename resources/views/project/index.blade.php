@@ -13,17 +13,6 @@
   background-color: #cccccc;
   background-image: linear-gradient(red, yellow);
 }
-
-
-h2 {
-  border: 2px dotted blue;
-}
-
-div {
-  border: double;
-  border-bottom-left-radius: 25px;
-}
-
     </style>
 
     <div class="row">

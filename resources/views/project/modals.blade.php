@@ -51,8 +51,7 @@
                             <div class="form-group">
                                 <label for="stack"><strong>Stack:</strong></label>
                                 <div class="form-check">
-                                    <label class="form-check-label">
-                                                                  
+                                    <label class="form-check-label">                               
                                     <input type="radio" class="form-check-input" name="stack" value="1">
                                     Frontend Developer<br>
                                     <input type="radio" class="form-check-input" name="stack" value="2">
@@ -63,21 +62,13 @@
                                     Designer UI/UX
                                   </label>
                                 </div>
-                                {{-- <select class="form-control" name="stack" id="stack">
-                                    <option value=""> -- Select Stack --</option>
-                                    <option value="1">Frontend Developer</option>
-                                    <option value="2">Backend Developer</option>
-                                    <option value="3">Devs Ops</option>
-                                    <option value="3">Designer UI/UX</option>
-                                </select> --}}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="proficiency"><strong>Proficiency:</strong></label>
                                 <div class="form-check">
-                                  <label class="form-check-label">
-                                      
+                                  <label class="form-check-label">   
                                        <input type="checkbox" class="form-check-input" name="proficiency" value="1">
                                             Expert<br>
                                        <input type="checkbox" class="form-check-input" name="proficiency" value="2">
@@ -86,12 +77,6 @@
                                             Beginner
                                   </label>
                                 </div>
-                                {{-- <select id="proficiency" name="proficiency" class="form-control">
-                                    <option value=""> -- Select Proficiency --</option>
-                                    <option value="1">Expert</option>
-                                    <option value="2">Intermediate</option>
-                                    <option value="3">Beginner</option>
-                                </select> --}}
                             </div>
                         </div>
                         <div class="col-md-6">

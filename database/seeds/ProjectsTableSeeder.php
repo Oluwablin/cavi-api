@@ -19,21 +19,22 @@ class ProjectsTableSeeder extends Seeder
 
     $faker = Faker::create();
 
-    $select = ['Oficemate', 'CV'];
-    $radioButton = ['Frontend', 'Backend', 'Devops'];
-    $checkBoxes = ['Expert', 'Intermediate', 'Beginner'];
+    // $select = ['Oficemate', 'CV'];
+    // $radioButton = ['Frontend', 'Backend', 'Devops'];
+    // $checkBoxes = ['Expert', 'Intermediate', 'Beginner'];
     
         //Creating a few projects in the database:
         for ($i = 0; $i < 25; $i++) {
             Project::create([
-                'title' => $faker->sentence,
+                'user_id' => $faker->randomNumber(),
+                'title' => $faker->sentence(),
                 'context' => $faker->paragraph,
-                'text' => $faker->realText(),
-                'date' => $faker->date(),
-                'select' => $select[array_rand($select)],
-                'radio_button' => $radioButton[array_rand($radioButton)],
-                'check_boxes' => $checkBoxes[array_rand($checkBoxes)],
-                'text_area' => $faker->realText(),
+                'description' => $faker->realText(),
+                'start_date' => $faker->date(),
+                'project' => $faker->numberBetween(1, 2, 3),
+                'stack' => $faker->numberBetween(1, 2, 3, 4),
+                'proficiency' => $faker->numberBetween(1, 2, 3),
+                'details' => $faker->realText(),
             ]);
         }
     }
