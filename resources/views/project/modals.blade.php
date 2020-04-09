@@ -15,7 +15,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="name" name="title"  placeholder="Title of your project..." class="form-control" id="title">
+                                <input type="text" name="title"  placeholder="Title of your project..." class="form-control" id="title">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -33,7 +33,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="start_date"><strong>Date:</strong></label>
-                                <input type="date" id="start_date" name="start_date">
+                                <input type="date" id="start_date" name="start_date" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -163,7 +163,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_title">Title</label>
-                                <input type="name" name="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title">
+                                <input type="text" name="title" placeholder="Type the Title of your project..." class="form-control" id="edit_title">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -181,7 +181,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_start_date"><strong>Date:</strong></label>
-                                <input value="" type="date" id="edit_start_date" name="start_date">
+                                <input type="date" id="edit_start_date" name="start_date" required>
                             </div>
                         </div>
                         <div class="col-md-6">

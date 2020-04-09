@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="">
                     <tr>
                         <th>No</th>
@@ -95,7 +95,7 @@
             else{
             var _token = '{{ csrf_token()}}';
             var query = {_token}
-            fetch(`{{ url('api/delete/project') }}/${project_id}`, {
+            fetch(`{{ url('delete/project') }}/${project_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -114,9 +114,9 @@
         }
 
         function editProject(project_id) {
-           // $("#spinner").show();
+           $("#spinner").show();
             console.log(project_id);
-            fetch(`{{ url('api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+            fetch(`{{ url('view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 $('#edit_title').val(result.title);
                 $('#edit_context').val(result.context);
                 $('#edit_description').val(result.description);
@@ -135,7 +135,7 @@
     	}
 
         function fetchAllProjects() {
-            fetch(`{{ url('api/fetch/all/added/projects') }}`, {
+            fetch(`{{ url('fetch/all/added/projects') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -178,12 +178,12 @@
             var description = $('#description').val();
             var start_date  = $('#start_date').val();
             var project     = $('#project').val();
-            var stack       = $("input[type='radio']:checked").val();
-            var proficiency = $("input[type='checkbox']:checked").val();
+            var stack       = $("input[name='stack']:checked").val();
+            var proficiency = $("input[name='proficiency']:checked").val();
             var details     = $('#details').val();
 
             $.ajax({
-                url: "api/add/project",
+                url: "add/project",
                 type: "POST",
                 data:{
                     "_token": "{{ csrf_token() }}",
@@ -214,13 +214,13 @@
             var description = $('#edit_description').val();
             var start_date  = $('#edit_start_date').val();
             var project     = $('#edit_project').val();
-            var stack       = $('input[name=edit_stack]:checked').val();
-            var proficiency = $('input[name=edit_proficiency]:checked').val();
+            var stack       = $("input[name='stack']:checked").val();
+            var proficiency = $("input[name='proficiency']:checked").val();
             var details     = $('#edit_details').val();
 
             var _token = '{{ csrf_token()}}';
             var query = {id, _token, title, context, description, start_date, project, stack, proficiency, details}
-            fetch(`{{ url('api/update/project') }}/${id}`, {
+            fetch(`{{ url('update/project') }}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -243,7 +243,7 @@
         function fetchOneProject(project_id) {
             $("#spinner").show();
             console.log(project_id);
-            fetch(`{{ url('/api/view/project') }}/${project_id}`).then(r => r.json()).then(result => {
+            fetch(`{{ url('view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 $("#myLargeModalLabel").html(result.title);
                 $("#contextText").html(result.context);
                 $("#descriptionText").html(result.description);
@@ -260,7 +260,7 @@
         }
 
         function fetchProjectList() {
-            fetch(`{{ url('api/fetch/project/list') }}`, {
+            fetch(`{{ url('fetch/project/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -281,7 +281,7 @@
         }
 
         function fetchStackList() {
-            fetch(`{{ url('api/fetch/stack/list') }}`, {
+            fetch(`{{ url('fetch/stack/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -291,7 +291,7 @@
             }).then(results => {
                 //console.log(results);
                 $("#all-stack").html("");
-                $("#edit-all-stacky").html("");
+                $("#edit-all-stack").html("");
                 $.each(results, function(index, val) {
                     $("#all-stack").append(`
                         <input type="radio" class="form-check-input" name="stack" value="${val.id}">${val.name}<br>
@@ -306,7 +306,7 @@
         }
 
         function resolveStackList(stack_id) {
-            fetch(`{{ url('api/fetch/stack/list') }}`, {
+            fetch(`{{ url('fetch/stack/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -334,7 +334,7 @@
         }
 
         function fetchProficiencyList() {
-            fetch(`{{ url('api/fetch/proficiency/list') }}`, {
+            fetch(`{{ url('fetch/proficiency/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -359,7 +359,7 @@
         }
 
         function resolveProficiencyList(proficiency_id) {
-            fetch(`{{ url('api/fetch/proficiency/list') }}`, {
+            fetch(`{{ url('fetch/proficiency/list') }}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
