@@ -272,7 +272,7 @@
                 // console.log(results);
                 $("#project").html("");
                 $("#project").append(`
-                    <option value=""> -- select project -- </option>
+                    <option value=""> -- Select Project -- </option>
                 `);
                 $.each(results, function(index, val) {
                     $("#project").append(`
