@@ -269,7 +269,10 @@
                 return r.json();
             }).then(results => {
                 // console.log(results);
-                $("#project:select").html("");
+                $("#project").html("");
+                $("#project").append(`
+                    <option value=""> -- select project -- </option>
+                `);
                 $.each(results, function(index, val) {
                     $("#project").append(`
                         <option value="${val.id}"> ${val.name} </option>
