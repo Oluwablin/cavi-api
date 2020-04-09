@@ -116,6 +116,7 @@
         function editProject(project_id) {
            $("#spinner").show();
             console.log(project_id);
+            $("#editProjectRef").val(project_id);
             fetch(`{{ url('view/project') }}/${project_id}`).then(r => r.json()).then(result => {
                 $('#edit_title').val(result.title);
                 $('#edit_context').val(result.context);
