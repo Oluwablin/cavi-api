@@ -116,11 +116,11 @@ class ProjectController extends Controller
     |-----------------------------------------
     */
     public function projects(Request $request){
-        $project    = new Project();
-        $data       = $project->getProjectList();
+        $projects    = new Project();
+        $data       = $projects->getProjectList();
 
         // return response
-        return response()->json($projects, 200);
+        return response()->json($data, 200);
     }
     
     /*
@@ -131,10 +131,10 @@ class ProjectController extends Controller
     public function stacks(Request $request){
         // body
         $stacks    = new Project();
-        $data      = $project->getStackList();
+        $data      = $stacks->getStackList();
 
         // return response
-        return response()->json($stacks, 200);
+        return response()->json($data, 200);
     }
 
     /*
@@ -148,7 +148,7 @@ class ProjectController extends Controller
         $data           = $proficiency->getProficiencyList();
 
         // return response
-        return response()->json($proficiency, 200);
+        return response()->json($data, 200);
         
     }
 
