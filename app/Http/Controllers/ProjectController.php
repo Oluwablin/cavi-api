@@ -116,21 +116,8 @@ class ProjectController extends Controller
     |-----------------------------------------
     */
     public function projects(Request $request){
-        // body
-        $projects = [
-            [
-                "id"    => 1,
-                "name"  => "Officemate"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "TIMS"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "CATSS"
-            ],
-        ];
+        $project    = new Project();
+        $data       = $project->getProjectList();
 
         // return response
         return response()->json($projects, 200);
@@ -143,24 +130,8 @@ class ProjectController extends Controller
     */
     public function stacks(Request $request){
         // body
-        $stacks = [
-            [
-                "id"    => 1,
-                "name"  => "Frontend Developer"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "Backend Developer"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "Devs Ops"
-            ],
-            [
-                "id"    => 4,
-                "name"  => "Designer UI/UX"
-            ],
-        ];
+        $stacks    = new Project();
+        $data      = $project->getStackList();
 
         // return response
         return response()->json($stacks, 200);
@@ -173,24 +144,8 @@ class ProjectController extends Controller
     */
     public function proficiency(Request $request){
         // body
-        $proficiency = [
-            [
-                "id"    => 1,
-                "name"  => "Expert"
-            ],
-            [
-                "id"    => 2,
-                "name"  => "Intermediate"
-            ],
-            [
-                "id"    => 3,
-                "name"  => "Beginner"
-            ],
-            [ 
-                "id"    => 4,
-                "name"  => "Novice"
-            ],
-        ];
+        $proficiency    = new Project();
+        $data           = $proficiency->getProficiencyList();
 
         // return response
         return response()->json($proficiency, 200);

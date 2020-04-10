@@ -82,7 +82,7 @@
         fetchProjectList();
         fetchStackList();
         fetchProficiencyList();
-        fetchOneProject();
+        // fetchOneProject();
 
 
         function addProject() {

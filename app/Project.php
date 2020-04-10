@@ -62,6 +62,13 @@ class Project extends Model
     public function allProjects($payload){
         // body
         $data = Project::orderBy('created_at', 'DESC')->get();
+        $data->transform(function($item){
+            $item->stack = $this->resolveStackName($item->stack);
+            $item->project = $this->resolveProjectName($item->project);
+            $item->proficiency = $this->resolveProficiencyName($item->proficiency);
+
+            return $item;
+        });
 
         // return
         return $data;
@@ -170,4 +177,143 @@ class Project extends Model
         return $data;
     }
 
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function getProjectList(){
+        // body
+        $projects = [
+            [
+                "id"    => 1,
+                "name"  => "Officemate"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "TIMS"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "CATSS"
+            ],
+        ];
+
+        // return
+        return $projects;   
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function getStackList(){
+        // body
+        $stacks = [
+            [
+                "id"    => 1,
+                "name"  => "Frontend Developer"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "Backend Developer"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "Devs Ops"
+            ],
+            [
+                "id"    => 4,
+                "name"  => "Designer UI/UX"
+            ],
+        ];
+
+        // return
+        return $stacks;
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function getProficiencyList(){
+        // body
+        $proficiency = [
+            [
+                "id"    => 1,
+                "name"  => "Expert"
+            ],
+            [
+                "id"    => 2,
+                "name"  => "Intermediate"
+            ],
+            [
+                "id"    => 3,
+                "name"  => "Beginner"
+            ],
+            [ 
+                "id"    => 4,
+                "name"  => "Novice"
+            ],
+        ];
+
+
+        // return
+        return $proficiency;
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function resolveStackName($stack_id){
+        // body
+        $stacks = $this->getStackList();
+        foreach ($stacks as $key => $value) {
+            if($value['id'] == $stack_id){
+                return $value['name'];
+            }else{
+                return null;
+            }
+        }
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function resolveProjectName($project_id){
+        // body
+        $projects = $this->getProjectList();
+
+        foreach ($projects as $key => $value) {
+            if($value['id'] == $project_id){
+                return $value['name'];
+            }else{
+                return null;
+            }
+        }
+    }
+
+    /*
+    |-----------------------------------------
+    | SHOW
+    |-----------------------------------------
+    */
+    public function resolveProficiencyName($proficiency_id){
+        // body
+        $proficiency = $this->getProficiencyList();
+
+        foreach ($proficiency as $key => $value) {
+            if($value['id'] == $proficiency_id){
+                return $value['name'];
+            }else{
+                return null;
+            }
+        }
+    }
 }
