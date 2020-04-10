@@ -62,13 +62,16 @@ class Project extends Model
     public function allProjects($payload){
         // body
         $data = Project::orderBy('created_at', 'DESC')->get();
-        $data->transform(function($item){
-            $item->stack = $this->resolveStackName($item->stack);
-            $item->project = $this->resolveProjectName($item->project);
-            $item->proficiency = $this->resolveProficiencyName($item->proficiency);
 
-            return $item;
-        });
+        //TODO: To display the name of the values instead of id
+        
+        // $data->transform(function($item){
+        //     $item->stack = $this->resolveStackName($item->stack);
+        //     $item->project = $this->resolveProjectName($item->project);
+        //     $item->proficiency = $this->resolveProficiencyName($item->proficiency);
+
+        //     return $item;
+        // });
 
         // return
         return $data;
