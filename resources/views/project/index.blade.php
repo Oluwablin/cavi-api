@@ -219,7 +219,10 @@
             var start_date  = $('#edit_start_date').val();
             var project     = $('#edit_project').val();
             var stack       = $("input[name='stack']:checked").val();
-            var proficiency = $("input[name='proficiency']:checked").val();
+            var proficiency = [];
+            $.each($("input[name='proficiency[]']:checked"), function() {
+                proficiency.push($(this).val());
+            });
             var details     = $('#edit_details').val();
 
             var _token = '{{ csrf_token()}}';
