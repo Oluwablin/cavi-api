@@ -180,7 +180,10 @@
             var start_date  = $('#start_date').val();
             var project     = $('#project').val();
             var stack       = $("input[name='stack']:checked").val();
-            var proficiency = $("input[name='proficiency']:checked").val();
+            var proficiency = [];
+            $.each($("input[name='proficiency[]']:checked"), function() {
+                proficiency.push($(this).val());
+            });
             var details     = $('#details').val();
 
             $.ajax({
@@ -351,10 +354,10 @@
                 $("#edit-all-proficiency").html("");
                 $.each(results, function(index, val) {
                     $("#all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
+                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}">${val.name}<br>
                     `);
                     $("#edit-all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
+                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}">${val.name}<br>
                     `);
                 });
             }).catch(err => {
@@ -376,12 +379,12 @@
                 $.each(results, function(index, val) {
                     if(val.id == proficiency_id){
                         $("#edit-all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}" checked>${val.name}<br>
+                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}" checked>${val.name}<br>
                        `);
                     }
                     else{
                         $("#edit-all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency" value="${val.id}">${val.name}<br>
+                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}">${val.name}<br>
                        `);
                     }
                 });
