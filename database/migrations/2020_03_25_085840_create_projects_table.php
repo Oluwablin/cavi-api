@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
             $table->date('start_date');
             $table->integer('project')->nullable();
             $table->integer('stack')->nullable();
-            $table->integer('proficiency')->nullable();
+            $table->json('proficiency')->nullable();
             $table->text('details')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
