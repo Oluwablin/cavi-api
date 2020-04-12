@@ -19,6 +19,8 @@ class Project extends Model
      */
     protected $guarded = ['id'];
 
+    protected $casts = ['proficiency' => 'array'];
+
     /*
     |-----------------------------------------
     | This enable user to add new project
