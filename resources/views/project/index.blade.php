@@ -368,7 +368,7 @@
             })
         }
 
-        function resolveProficiencyList(proficiency_id) {
+        function resolveProficiencyList(selected_proficiency) {
             fetch(`{{ url('fetch/proficiency/list') }}`, {
                 method: 'GET',
                 headers: {
@@ -379,17 +379,21 @@
             }).then(results => {
                 //console.log(results); 
                 $("#edit-all-proficiency").html("");
+                var is_checked;
                 $.each(results, function(index, val) {
-                    if(val.id == proficiency_id){
-                        $("#edit-all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}" checked>${val.name}<br>
+                    $.each(selected_proficiency, function(sub_index, sub_val){
+                        if(val.id == sub_val) 
+                        {
+                            is_checked = 'checked';
+                        }
+                        else{
+                            is_checked = '';
+                        }
+                    });
+                    
+                    $("#edit-all-proficiency").append(`
+                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}" ${is_checked}>${val.name}<br>
                        `);
-                    }
-                    else{
-                        $("#edit-all-proficiency").append(`
-                        <input type="checkbox" class="form-check-input" name="proficiency[]" value="${val.id}">${val.name}<br>
-                       `);
-                    }
                 });
             }).catch(err => {
                 console.log(err);
